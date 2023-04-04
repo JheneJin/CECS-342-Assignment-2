@@ -12,9 +12,14 @@ class Program {
       Console.WriteLine(p.name + ", " + p.age);
     }
 
-    Console.WriteLine("\npersons AFTER sorting");
+    Console.WriteLine("\npersons AFTER sorting by name alphabetically");
+    persons = persons.OrderBy(p => p.name).ToArray();
+    foreach (Person p in persons){
+      Console.WriteLine(p.name + ", " + p.age);
+    }
+
+    Console.WriteLine("\npersons AFTER sorting by age descending and by name alphabetically");
     persons = persons.OrderBy(p => p).ToArray();
-    //Array.Sort(persons);
     foreach (Person p in persons){
       Console.WriteLine(p.name + ", " + p.age);
     }
@@ -47,7 +52,7 @@ public class Person : IComparable<Person> {
    public int CompareTo(Person that)
     {
         if (this.age >  that.age) return -1;
-        if (this.age == that.age) return this.name.CompareTo(that.name);;
+        if (this.age == that.age) return this.name.CompareTo(that.name);
         return 1;
     }
   
