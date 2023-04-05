@@ -1,3 +1,4 @@
+# Class object type for People
 class People:
   
   def __init__(self, personName, personAge ):
@@ -34,7 +35,7 @@ def main():
   numberArray = [645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.10, 23.46, 635.47, -876.32, 467.83, 62.25]
   
   print("--------------------------------------------")
-  print("Comparing by age, and if equal then by name")
+  print("Sorting age in descending order, and if equal then by name in lexicographical order")
   print("-------------")
   print("Before:")
   print("-------------")
@@ -43,6 +44,7 @@ def main():
   print("-------------")
   print("After:")
   print("-------------")
+  # Uses generic sort
   personArray = sorted(personArray)
   for i in range(0, len(personArray)):
     print(personArray[i], end=";\n")
@@ -51,7 +53,7 @@ def main():
   print("\n\n\n")
   
   print("--------------------------------------------") 
-  print("Comparing by name only")
+  print("Sorting name in lexicographical order")
   print("-------------")
   print("Before:")
   print("-------------")
@@ -60,6 +62,9 @@ def main():
   print("-------------")
   print("After:")
   print("-------------")
+  # Uses generic sort, and compares the array
+  # by using the compareNameOnly function that's passed in
+  # as the key
   personArray = sorted(personArray, key=compareNameOnly)
   for i in range(0, len(personArray)):
     print(personArray[i], end=";\n")
@@ -68,7 +73,7 @@ def main():
   print("\n\n\n")
   
   print("--------------------------------------------")
-  print("Comparing numbers ascending by numerical value")
+  print("Sorting numbers ascending by numerical value")
   print("-------------")
   print("Before:")
   print("-------------")
@@ -77,6 +82,7 @@ def main():
   print("-------------")
   print("After:")
   print("-------------")
+  # Uses generic sort
   numberArray = sorted(numberArray)
   for i in range(0, len(numberArray)):
     print(numberArray[i], end="\n")
