@@ -7,7 +7,7 @@ class People:
   def __str__(self):
     return self.name + ", " + str(self.age)
 
-  # sorts by age and compares name if age is equal as default type comarison
+  # sorts by age in descending order and compares name if age is equal as default type comarison
   def __lt__(self, person):
     # If the age is less return false, else true
     if (self.age < person.age):
@@ -21,7 +21,7 @@ class People:
     return True
 
 
-# Comparison function that only compares the name of an object
+# Comparison function that only compares the name of an object as long as it has the name attribute
 def compareNameOnly(object):
   return object.name
 
