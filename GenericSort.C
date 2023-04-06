@@ -95,7 +95,7 @@ int main()
     {
         printf("%0.2f ", numbers[i]);
     }
-    printf("\n\n");
+    printf("\n\n Sort By Alphabetical Order\n");
 
     // sort by key
     sort(people, sizeof(people), sizeof(dict), compare_key);
@@ -103,7 +103,7 @@ int main()
     {
         printf("{%s : %d},\n", people[i].key, people[i].value);
     }
-    printf("\n");
+    printf("\nSort By Age in Descending Order\n");
 
     // sort by value
     sort(people, sizeof(people), sizeof(dict), compare_value);
