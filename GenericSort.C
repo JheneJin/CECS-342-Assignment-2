@@ -10,7 +10,7 @@ typedef struct
     int value;
 } dict;
 
-// sorting functions
+// sorting fucntions
 void sort(void *a, size_t structSize, size_t numSize, int (*compare)(void *x, void *y))
 {
     size_t len = structSize / numSize;
@@ -37,25 +37,14 @@ int compare_float(void *x, void *y)
     {
         return 1;
     }
-    return -1;
-}
-
-int compare_int(void *x, void *y)
-{
-    int *v1 = (int *)x;
-    int *v2 = (int *)y;
-    if (*v1 > *v2)
-    {
-        return 1;
-    }
-    return -1;
+    return 0;
 }
 
 int compare_key(dict *x, dict *y)
 {
-    char *l1 = (dict *)x->key;
-    char *l2 = (dict *)y->key;
-    return strcmp(l1,l2);
+    char *v1 = (dict *)x->key;
+    char *v2 = (dict *)y->key;
+    return strcmp(v1, v2);
 }
 
 int compare_value(dict *x, dict *y)
@@ -66,22 +55,20 @@ int compare_value(dict *x, dict *y)
     char *l2 = (dict *)y->key;
     if (v1 != v2)
     {
-        if(v1 < v2){
+        if (v1 < v2)
+        {
             return 1;
         }
-        return -1;
-    }else{
-        if(l1 > l2){
-            return 1;
-        }
-        return -1;
+        return 0;
+    }
+    else
+    {
+        return strcmp(l1, l2);
     }
 }
-
 int main()
 {
     float numbers[] = {645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.10, 23.46, 635.47, -876.32, 467.83, 62.25};
-    int numbers2[] = {90, 20, 50, 100, 10, -8, 0, -9, 60};
     dict people[] =
         {
             {"Hal", 20},
@@ -102,7 +89,7 @@ int main()
             {"Juan", 33},
             {"Natalie", 25}};
 
-    // sort by numbers
+    // sort list of numbers
     sort(numbers, sizeof(numbers), sizeof(float), compare_float);
     for (int i = 0; i < (sizeof(numbers) / sizeof(float)); i++)
     {
@@ -110,22 +97,7 @@ int main()
     }
     printf("\n\n");
 
-    sort(numbers2, sizeof(numbers), sizeof(int), compare_int);
-    for (int i = 0; i < (sizeof(numbers2) / sizeof(int)); i++)
-    {
-        printf("%d ", numbers2[i]);
-    }
-    printf("\n\n");
-
-    printf("Before Sort\n");
-    for (int i = 0; i < (sizeof(people) / sizeof(dict)); i++)
-    {
-        printf("{%s : %d},\n", people[i].key, people[i].value);
-    }
-    printf("\n");
-  
-    // sort by keys/names
-    printf("Sort By Names\n");
+    // sort by key
     sort(people, sizeof(people), sizeof(dict), compare_key);
     for (int i = 0; i < (sizeof(people) / sizeof(dict)); i++)
     {
@@ -133,8 +105,7 @@ int main()
     }
     printf("\n");
 
-    // sort by values/ages
-    printf("Sort By Ages\n");
+    // sort by value
     sort(people, sizeof(people), sizeof(dict), compare_value);
     for (int i = 0; i < (sizeof(people) / sizeof(dict)); i++)
     {
